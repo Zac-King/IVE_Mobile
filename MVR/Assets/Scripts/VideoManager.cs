@@ -10,7 +10,7 @@ public class VideoManager : MonoBehaviour
         for (int i = 0; i < VideoUrls.Count; i++)
         {
             MediaPlayerCtrl pl = gameObject.AddComponent<MediaPlayerCtrl>();
-            GameObject screen = Resources.Load("SphereScreen") as GameObject;
+            GameObject screen = Instantiate(Resources.Load("SphereScreen")) as GameObject;
             screen.SetActive(false);
 
             pl.m_bInit = false;
