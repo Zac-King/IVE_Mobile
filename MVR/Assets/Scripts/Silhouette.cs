@@ -3,22 +3,25 @@ using System.Collections;
 
 public class Silhouette : MonoBehaviour
 {
+    // Variables ///////////////////////////////////////////////////////////////////////////////////////
     [SerializeField] private AnimationCurve pulseRate;
 
-	[ContextMenu("Pulse")]
-	void StartItUp ()
+    // MonoBehaviour ///////////////////////////////////////////////////////////////////////////////////
+    [ContextMenu("Pulse")]
+	void Start ()
     {
         StartCoroutine(HighLightPulse(1));
 	}
-
-    IEnumerator HighLightPulse(float time)
+    // Function ////////////////////////////////////////////////////////////////////////////////////////
+    IEnumerator HighLightPulse(float time)      // Animation of object
     {
         while (true)
         {
-            float timer = 0;
+            float timer = 0;    // Interator
             while (timer <= time)
             {
-                transform.localScale = new Vector3(pulseRate.Evaluate(timer / time), pulseRate.Evaluate(timer / time), pulseRate.Evaluate(timer / time));
+                float s = pulseRate.Evaluate(timer / time);
+                transform.localScale = new Vector3(s, s, s);
                 timer += Time.deltaTime;
                 yield return null;
             }
